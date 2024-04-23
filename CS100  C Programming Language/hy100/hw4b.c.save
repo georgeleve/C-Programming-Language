@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/*dilosi katholikon metabliton*/
+ char stack[200];
+ int pinakasgrammon[200] ;
+ int l = -1;
+
+int main{int argc , char *argv[]) {
+
+/* dilosi metabliton */
+int i = 0 , lines = 1 , k , grammes[200]={1} ,x=0;
+char keimeno[200], p[8]={'(','[','{','<',')',']','}','>'};
+FILE *fp ;
+
+/* sinartisi othisis*/
+balestoixeio(char stoixeio,int grammi){
+    l++ ;
+ stack[l]=stoixeio ;
+ pinakasgrammon[l]=grammi ;
+}
+
+
+/* elegxou parentheseon */ {
+elegxos (char open , char close )
+if open== '(' && close == ')' {return 1;}
+else if open =='{' && close == '}'{return 1;}
+else if open == '[' && close == ']' {return 1;}
+else if open == '<' && close == '>' {return 1;}
+else {return 0;}
+}
+}
+
+
+/*anoigma fakelou*/
+fp = fopen (argv[1],"r") ;
+if (fp==NULL) {
+    exit(-1);
+}
+
+
+while (k=fgetc(fp)!= EOF ) {
+    if (k = '\n') { lines++; }
+    if (k == p[0] || k == p[1] || k == p[2] || k == p[3], k == p[4], k == p[5], k == p[6], k == p[7]) {
+        keimeno[i] = k;
+        grammes[i] = lines;
+    }
+    i++ ;
+}
+    for(x=0;x<200;x++){
+        if (keimeno[x]='(' || keimeno[x]='[' || keimeno[x]='{' || keimeno[x]='<') {
+            balestoixeio(keimeno[x],grammes[x]) ;
+        }
+        else if (k=')' || k = ']' || k = '}' || k='>') {
+            if (elegxos(stack[l],keimeno[x]) == 0) {
+                printf("Mishmatch : ")
+            }else{
+                l-- ;
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if (count1 =0 && count2=0 &&count3=0 && count4 = 0) {
+        printf("OK");
+}
+
+
+
+}

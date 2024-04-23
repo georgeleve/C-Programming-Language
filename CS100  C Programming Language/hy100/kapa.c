@@ -1,0 +1,85 @@
+/*George - Gerasimos Leventopoulos  AM : 4152 */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main(int argc , char *argv[]) {
+    /*dilosi metabliton*/
+    int i, k, fault, letterscounter;
+    char character, *kanonikotext;
+    char *textmekena;
+    FILE *fp;
+    i = 0;
+    k = 0;
+    fault = 0;
+    /*dilosi fakelou*/
+    /*anoigma fakelou*/
+    fp = fopen(argv[1], "r");
+    /*elegxos an o fakelos iparxei*/
+    if (fp == NULL) {
+        printf("file not present");
+        exit(-1);
+    } else {
+        printf("file opened in read mode");
+    }
+    kanonikotext = malloc(2 * sizeof(char));
+    /*diabasma fakelou*/
+    i = 0;
+    while ((kanonikotext[i] = getc(fp)) != EOF) {
+        i++;
+        kanonikotext = realloc(kanonikotext, i * sizeof(char));
+    }
+    textmekena = malloc(2 * sizeof(char));
+    letterscounter = i;
+    /*elegxos gia ton deytero pinaka*/
+    for (i = 0; i <= letterscounter; i++) {
+        if (kanonikotext[i] == ' ') {
+            textmekena[i] = ' ';
+        } else if (kanonikotext[i] == '\n') {
+            textmekena[i] = '\n';
+        } else {
+            textmekena[i] = '_';
+        }
+
+        /*emfanisi text me kena*/
+        for (i = 0; i <= letterscounter; i++) {
+            printf("%c", textmekena[i]);
+        }
+
+        while (fault <= 4 && (strcmp(kanonikotext, textmekena)) != 0) {
+            scanf("%c", &character);
+
+            k = 0;
+            /*tsekaro an iparxei to gramma tou xrhsth*/
+            for (i = 0; i < letterscounter; i++) {
+                if (kanonikotext[i] == character) {
+                    textmekena[i] = character;
+                    k = 1;
+                }
+            }
+            /*aυξano ta lathi (an xreiazetai)*/
+                if (k == 0) {
+                fault++;
+                }
+            }
+            if (fault == 0) {
+                printf("__\n");
+            } else if (fault == 1) {
+                printf("_|_\n");
+            } else if (fault == 2) {
+                printf("|\n|\n_|_\n");
+            } else if (fault == 3) {
+                printf("___\n");
+                printf("|  o\n|  -|-\n|   |\\ \n _|_");
+            }
+            /* emfanisi ston xristi */
+        for (i = 0; i < letterscounter; i++) {
+            printf("%c", textmekena[i]);
+        }
+    if (fault == 4) {
+        printf("LOSE");
+    } else {
+        printf("WIN");
+    }
+}
+}
